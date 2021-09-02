@@ -1,0 +1,62 @@
+{
+    "name": "aplus/aplus",
+    "type": "library",
+    "description": "Aplus",
+    "keywords": [
+        "aplus",
+        "cli",
+        "framework",
+        "installer",
+        "preload",
+        "tool"
+    ],
+    "homepage": "https://docs.aplus-framework.com/guides/aplus/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Natan Felles",
+            "email": "natanfelles@gmail.com",
+            "homepage": "https://natanfelles.github.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-posix": "*"
+    },
+    "require-dev": {
+        "ext-xdebug": "*",
+        "aplus/coding-standard": "^1.10",
+        "aplus/framework": "dev-master",
+        "ergebnis/composer-normalize": "^2.15",
+        "phpmd/phpmd": "^2.10",
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": "^9.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Aplus\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "bin": [
+        "bin/aplus"
+    ],
+    "support": {
+        "email": "support@aplus-framework.com",
+        "issues": "https://gitlab.com/aplus-framework/aplus/issues",
+        "wiki": "https://gitlab.com/aplus-framework/aplus/wikis/home",
+        "source": "https://gitlab.com/aplus-framework/aplus",
+        "docs": "https://docs.aplus-framework.com/guides/aplus/"
+    }
+}
