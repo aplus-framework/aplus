@@ -19,6 +19,10 @@ use Framework\CLI\CLI;
  */
 class Index extends \Framework\CLI\Commands\Index
 {
+    protected array $options = [
+        '-g' => 'Shows greeting.',
+    ];
+
     public function run() : void
     {
         $this->showHeader();
