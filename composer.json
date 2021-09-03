@@ -21,12 +21,12 @@
     ],
     "require": {
         "php": ">=8.0",
-        "ext-posix": "*"
+        "ext-posix": "*",
+        "aplus/framework": "dev-master"
     },
     "require-dev": {
         "ext-xdebug": "*",
         "aplus/coding-standard": "^1.10",
-        "aplus/framework": "dev-master",
         "ergebnis/composer-normalize": "^2.15",
         "phpmd/phpmd": "^2.10",
         "phpstan/phpstan": "^0.12",
