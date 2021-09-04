@@ -11,6 +11,8 @@ namespace Aplus\Commands;
 
 use Framework\CLI\CLI;
 use Framework\CLI\Command;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Class NewCommand.
@@ -32,13 +34,31 @@ abstract class NewCommand extends Command
             CLI::error('Package ' . $package . ' not found');
             return;
         }
-        $source = \strtr($source, [' ' => '\ ']);
-        $dir = \strtr($directory, [' ' => '\ ']);
-        \shell_exec("cp -r {$source}/* {$dir}");
+        $this->copyDir($source, $directory);
         CLI::write(
             $name . ' structure created at "' . $directory . '"',
             CLI::FG_GREEN
         );
+    }
+
+    protected function copyDir(string $source, string $directory) : void
+    {
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($source, RecursiveDirectoryIterator::SKIP_DOTS),
+            RecursiveIteratorIterator::SELF_FIRST
+        );
+        foreach ($iterator as $item) {
+            if ($item->isDir()) {
+                $dir = $directory . \DIRECTORY_SEPARATOR . $iterator->getSubPathname();
+                if ( ! \mkdir($dir, 0755, true) && ! \is_dir($dir)) {
+                    CLI::error(
+                        \sprintf('Directory "%s" could not be created', $dir)
+                    );
+                }
+                continue;
+            }
+            \copy((string) $item, $directory . \DIRECTORY_SEPARATOR . $iterator->getSubPathname());
+        }
     }
 
     protected function getDirectory() : string
