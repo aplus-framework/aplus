@@ -9,15 +9,12 @@
  */
 namespace Aplus\Commands;
 
-use Framework\CLI\CLI;
-use Framework\CLI\Command;
-
 /**
  * Class NewApp.
  *
  * @package aplus
  */
-class NewApp extends Command
+class NewApp extends NewCommand
 {
     protected string $name = 'new-app';
     protected string $description = 'Creates a new App Project.';
@@ -25,63 +22,6 @@ class NewApp extends Command
 
     public function run() : void
     {
-        $directory = $this->console->getArgument(0);
-        if ($directory === null) {
-            $directory = $this->promptDirectory();
-        }
-        if ( ! \str_starts_with($directory, '/')) {
-            $directory = \getcwd() . '/' . $directory;
-        }
-        if (\file_exists($directory)) {
-            CLI::error(
-                \sprintf('The path "%s" already exists', $directory)
-            );
-        }
-        if ( ! \mkdir($directory, 0755, true) && ! \is_dir($directory)) {
-            CLI::error(
-                \sprintf('Directory "%s" could not be created', $directory)
-            );
-        }
-        $directory = \realpath($directory);
-        if ($directory === false) {
-            CLI::error(
-                \sprintf('Was not possible get the realpath of "%s"', $directory)
-            );
-            return;
-        }
-        $source = __DIR__ . '/../../vendor/aplus/app';
-        if (\is_dir(__DIR__ . '/../../../../aplus/app')) {
-            $source = __DIR__ . '/../../../../aplus/app';
-        }
-        $source = \realpath($source);
-        if ($source === false) {
-            CLI::error('Directory aplus/app not found');
-            return;
-        }
-        $source = \strtr($source, [' ' => '\ ']);
-        $directory = \strtr($directory, [' ' => '\ ']);
-        \shell_exec("cp -r {$source}/* {$directory}");
-        CLI::write(
-            'App Project structure created at "' . $directory . '"',
-            CLI::FG_GREEN
-        );
-    }
-
-    protected function promptDirectory() : string
-    {
-        $directory = CLI::prompt('Directory');
-        $directory = \trim($directory);
-        if ($directory === '') {
-            CLI::error('Directory path cannot be empty. Try again.', null);
-            return $this->promptDirectory();
-        }
-        if ( ! \str_starts_with($directory, '/')) {
-            $directory = \getcwd() . '/' . $directory;
-        }
-        if (\file_exists($directory)) {
-            CLI::error('Directory already exists. Try Again.', null);
-            return $this->promptDirectory();
-        }
-        return $directory;
+        $this->create('app', 'App Project');
     }
 }
