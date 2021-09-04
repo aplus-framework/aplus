@@ -33,8 +33,8 @@ abstract class NewCommand extends Command
             return;
         }
         $source = \strtr($source, [' ' => '\ ']);
-        $directory = \strtr($directory, [' ' => '\ ']);
-        \shell_exec("cp -r {$source}/* {$directory}");
+        $dir = \strtr($directory, [' ' => '\ ']);
+        \shell_exec("cp -r {$source}/* {$dir}");
         CLI::write(
             $name . ' structure created at "' . $directory . '"',
             CLI::FG_GREEN
