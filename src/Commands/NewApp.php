@@ -61,7 +61,10 @@ class NewApp extends Command
         $source = \strtr($source, [' ' => '\ ']);
         $directory = \strtr($directory, [' ' => '\ ']);
         \shell_exec("cp -r {$source}/* {$directory}");
-        CLI::write('App Project structure created at ' . $directory);
+        CLI::write(
+            'App Project structure created at "' . $directory . '"',
+            CLI::FG_GREEN
+        );
     }
 
     protected function promptDirectory() : string
@@ -69,7 +72,14 @@ class NewApp extends Command
         $directory = CLI::prompt('Directory');
         $directory = \trim($directory);
         if ($directory === '') {
-            CLI::write('Directory path cannot be empty. Try again.');
+            CLI::error('Directory path cannot be empty. Try again.', null);
+            return $this->promptDirectory();
+        }
+        if ( ! \str_starts_with($directory, '/')) {
+            $directory = \getcwd() . '/' . $directory;
+        }
+        if (\file_exists($directory)) {
+            CLI::error('Directory already exists. Try Again.', null);
             return $this->promptDirectory();
         }
         return $directory;
