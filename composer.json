@@ -23,7 +23,8 @@
         "php": ">=8.0",
         "ext-posix": "*",
         "aplus/app": "dev-master",
-        "aplus/framework": "dev-master"
+        "aplus/framework": "dev-master",
+        "aplus/one": "dev-master"
     },
     "require-dev": {
         "ext-xdebug": "*",
