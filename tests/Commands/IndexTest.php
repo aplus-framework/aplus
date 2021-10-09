@@ -25,11 +25,4 @@ final class IndexTest extends TestCase
         $this->console->exec('index');
         self::assertStringContainsString(Aplus::DESCRIPTION, Stdout::getContents());
     }
-
-    public function testGreeting() : void
-    {
-        Stdout::init();
-        $this->console->exec('index -g');
-        self::assertStringContainsString('Good ', Stdout::getContents());
-    }
 }

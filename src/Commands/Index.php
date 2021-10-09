@@ -19,17 +19,12 @@ use Framework\CLI\CLI;
  */
 class Index extends \Framework\CLI\Commands\Index
 {
-    protected array $options = [
-        '-g' => 'Shows greeting.',
-    ];
-
     public function run() : void
     {
         $this->showHeader();
         $this->showDate();
         $this->showInfo();
-        $showGreet = $this->console->getOption('g');
-        if ($showGreet) {
+        if ($this->console->getOption('g')) {
             $this->greet();
         }
         $this->listCommands();
@@ -53,37 +48,5 @@ class Index extends \Framework\CLI\Commands\Index
             . ' with PHP ' . \PHP_VERSION
         );
         CLI::newLine();
-    }
-
-    protected function greet() : void
-    {
-        $hour = \date('H');
-        $timing = 'evening';
-        if ($hour > 4 && $hour < 12) {
-            $timing = 'morning';
-        } elseif ($hour > 4 && $hour < 18) {
-            $timing = 'afternoon';
-        }
-        $greeting = 'Good ' . $timing . ', ' . $this->getUser() . '!';
-        CLI::write($greeting);
-        CLI::newLine();
-    }
-
-    protected function getUser() : string
-    {
-        $username = \posix_getlogin();
-        if ($username === false) {
-            return 'friend';
-        }
-        $info = \posix_getpwnam($username);
-        if ( ! $info) {
-            return $username;
-        }
-        $gecos = $info['gecos'] ?? '';
-        if ( ! $gecos) {
-            return $username;
-        }
-        $length = \strpos($gecos, ',') ?: \strlen($gecos);
-        return \substr($gecos, 0, $length);
     }
 }
