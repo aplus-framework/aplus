@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of Aplus.
+ * This file is part of Aplus Command Line Tool.
  *
  * (c) Natan Felles <natanfelles@gmail.com>
  *

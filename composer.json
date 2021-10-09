@@ -1,7 +1,7 @@
 {
     "name": "aplus/aplus",
     "type": "library",
-    "description": "Aplus",
+    "description": "Aplus Command Line Tool",
     "keywords": [
         "aplus",
         "cli",

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /*
- * This file is part of Aplus.
+ * This file is part of Aplus Command Line Tool.
  *
  * (c) Natan Felles <natanfelles@gmail.com>
  *
@@ -11,7 +11,7 @@ use Framework\CodingStandard\Config;
 use Framework\CodingStandard\Finder;
 
 return (new Config())->setDefaultHeaderComment(
-    'Aplus',
+    'Aplus Command Line Tool',
     'Natan Felles <natanfelles@gmail.com>'
 )->setFinder(
     Finder::create()->in(__DIR__)

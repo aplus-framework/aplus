@@ -1,4 +1,4 @@
-# Aplus
+# Aplus Command Line Tool
 
 - [User Guide](https://docs.aplus-framework.com/guides/aplus/index.html)
 
