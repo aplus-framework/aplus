@@ -1,3 +1,5 @@
+<a href="https://gitlab.com/aplus-framework/aplus"><img src="https://gitlab.com/aplus-framework/aplus/-/raw/master/guide/image.png" alt="Aplus Command Line Tool" align="right" width="100"></a>
+
 # Aplus Command Line Tool
 
 - [User Guide](https://docs.aplus-framework.com/guides/aplus/index.html)
