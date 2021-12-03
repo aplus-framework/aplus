@@ -10,7 +10,7 @@
         "preload",
         "tool"
     ],
-    "homepage": "https://docs.aplus-framework.com/guides/aplus/",
+    "homepage": "https://aplus-framework.com/packages/aplus",
     "license": "MIT",
     "authors": [
         {
@@ -57,8 +57,14 @@
     "support": {
         "email": "support@aplus-framework.com",
         "issues": "https://gitlab.com/aplus-framework/aplus/issues",
-        "wiki": "https://gitlab.com/aplus-framework/aplus/wikis/home",
+        "forum": "https://aplus-framework.com/forum/packages/aplus",
         "source": "https://gitlab.com/aplus-framework/aplus",
         "docs": "https://docs.aplus-framework.com/guides/aplus/"
-    }
+    },
+    "funding": [
+        {
+            "type": "Aplus Sponsor",
+            "url": "https://aplus-framework.com/sponsor"
+        }
+    ]
 }
