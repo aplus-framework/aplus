@@ -2,6 +2,7 @@
 
 # Aplus Command Line Tool
 
+- [Homepage](https://aplus-framework.com/packages/aplus)
 - [User Guide](https://docs.aplus-framework.com/guides/aplus/index.html)
 
 [![pipeline](https://gitlab.com/aplus-framework/aplus/badges/master/pipeline.svg)](https://gitlab.com/aplus-framework/aplus/-/pipelines?scope=branches)
