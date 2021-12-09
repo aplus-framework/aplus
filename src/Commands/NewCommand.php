@@ -24,14 +24,15 @@ abstract class NewCommand extends Command
     protected function create(string $package, string $name) : void
     {
         $directory = $this->getDirectory();
-        $package = 'aplus/' . $package;
-        $source = __DIR__ . '/../../../../' . $package;
-        if ( ! \is_dir($source)) {
-            $source = __DIR__ . '/../../vendor/' . $package;
+        $source = $this->getComposerSource($package);
+        if ( ! $source) {
+            $source = $this->getComposerSource($package, true);
+            if ( ! $source) {
+                $source = $this->getDistroSource($package);
+            }
         }
-        $source = \realpath($source);
-        if ($source === false) {
-            CLI::error('Package ' . $package . ' not found');
+        if ( ! $source) {
+            CLI::error('Package aplus/' . $package . ' not found');
             return;
         }
         $this->copyDir($source, $directory);
@@ -39,6 +40,27 @@ abstract class NewCommand extends Command
             $name . ' structure created at "' . $directory . '"',
             CLI::FG_GREEN
         );
+    }
+
+    protected function getComposerSource(string $package, bool $global = false) : false | string
+    {
+        $source = $global
+            ? __DIR__ . '/../../../../../'
+            : __DIR__ . '/../../';
+        $source .= 'vendor/aplus/' . $package;
+        if (\is_dir($source)) {
+            return \realpath($source);
+        }
+        return false;
+    }
+
+    protected function getDistroSource(string $package) : false | string
+    {
+        $source = __DIR__ . '/../../../../packages/' . $package;
+        if (\is_dir($source)) {
+            return \realpath($source);
+        }
+        return false;
     }
 
     protected function copyDir(string $source, string $directory) : void
