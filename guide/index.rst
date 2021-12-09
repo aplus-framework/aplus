@@ -1,7 +1,10 @@
 Aplus
 =====
 
-Aplus.
+.. image:: image.png
+   :alt: Aplus Command Line Tool
+
+Aplus Command Line Tool.
 
 - `Installation`_
 
