@@ -2,8 +2,10 @@
 <?php
 if (is_file(__DIR__ . '/../../../autoload.php')) {
     require __DIR__ . '/../../../autoload.php';
-} else {
+} elseif (is_file(__DIR__ . '/../../../autoload.php')) {
     require __DIR__ . '/../vendor/autoload.php';
+} else {
+    die ("Unable to find autoloader");
 }
 
 use Aplus\Commands\Index;
