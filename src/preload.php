@@ -9,8 +9,10 @@
  */
 if (is_file(__DIR__ . '/../../autoload/src/Preloader.php')) {
     require __DIR__ . '/../../autoload/src/Preloader.php';
-} else {
+} elseif (is_file(__DIR__ . '/../../autoload/src/Preloader.php')) {
     require __DIR__ . '/../vendor/aplus/autoload/src/Preloader.php';
+} else {
+    die ("Unable to find pre-loader");
 }
 
 use Framework\Autoload\Preloader;
