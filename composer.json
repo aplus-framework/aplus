@@ -33,7 +33,7 @@
         }
     ],
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "ext-posix": "*",
         "aplus/app": "dev-master",
         "aplus/framework": "dev-master",
