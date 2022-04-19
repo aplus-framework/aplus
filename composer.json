@@ -63,6 +63,9 @@
         "bin/aplus"
     ],
     "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
