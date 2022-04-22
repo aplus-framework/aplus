@@ -17,6 +17,9 @@ use Framework\CLI\Console;
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
     protected Console $console;
+    /**
+     * @var class-string<\Framework\CLI\Command>
+     */
     protected string $command;
 
     protected function setUp() : void
