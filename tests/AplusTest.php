@@ -24,6 +24,9 @@ final class AplusTest extends TestCase
         self::assertSame('', Stdout::getContents());
         require __DIR__ . '/../src/aplus.php';
         self::assertNotSame('', Stdout::getContents());
-        self::assertStringContainsString(Aplus::DESCRIPTION, Stdout::getContents());
+        self::assertStringContainsString(
+            'Aplus ' . Aplus::VERSION,
+            Stdout::getContents()
+        );
     }
 }

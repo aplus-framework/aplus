@@ -43,7 +43,7 @@ class Index extends \Framework\CLI\Commands\Index
             }
         }
         CLI::write(
-            Aplus::DESCRIPTION
+            'Running Aplus ' . Aplus::VERSION
             . ' on ' . $distro
             . ' with PHP ' . \PHP_VERSION
         );

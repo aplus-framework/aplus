@@ -23,6 +23,9 @@ final class IndexTest extends TestCase
     {
         Stdout::init();
         $this->console->exec('index');
-        self::assertStringContainsString(Aplus::DESCRIPTION, Stdout::getContents());
+        self::assertStringContainsString(
+            'Aplus ' . Aplus::VERSION,
+            Stdout::getContents()
+        );
     }
 }
